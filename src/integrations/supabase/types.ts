@@ -14,13 +14,75 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      files: {
+        Row: {
+          created_at: string
+          file_name: string
+          file_path: string
+          file_size: number
+          id: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          file_name: string
+          file_path: string
+          file_size: number
+          id?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          file_name?: string
+          file_path?: string
+          file_size?: number
+          id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "files_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      users: {
+        Row: {
+          created_at: string
+          face_embedding: string
+          id: string
+          passcode_hash: string
+        }
+        Insert: {
+          created_at?: string
+          face_embedding: string
+          id?: string
+          passcode_hash: string
+        }
+        Update: {
+          created_at?: string
+          face_embedding?: string
+          id?: string
+          passcode_hash?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      match_user: {
+        Args: { match_threshold: number; query_embedding: string }
+        Returns: {
+          distance: number
+          passcode_hash: string
+          user_id: string
+        }[]
+      }
     }
     Enums: {
       [_ in never]: never

@@ -1,4 +1,16 @@
 import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import tsconfigPaths from 'vite-tsconfig-paths';
 
-// Minimal Vite config. Add plugins or customizations as needed for your deployment.
-export default defineConfig({});
+// Vite config optimized for Netlify deployment
+export default defineConfig({
+  plugins: [react(), tsconfigPaths()],
+  build: {
+    outDir: 'dist',
+    sourcemap: false,
+    minify: 'terser',
+  },
+  server: {
+    port: 3000,
+  },
+});

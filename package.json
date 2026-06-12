@@ -82,7 +82,8 @@
     "format": "prettier --write .",
     "lint": "eslint .",
     "preview": "vite preview",
-    "deploy:wrangler": "wrangler publish"
+    "deploy:wrangler": "wrangler publish",
+    "deploy:netlify": "netlify deploy --prod --dir=dist"
   },
   "sideEffects": false,
   "type": "module"

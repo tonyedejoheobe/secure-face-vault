@@ -3,9 +3,10 @@ import { supabase } from "@/integrations/supabase/client";
 async function invoke<T>(name: string, body: Record<string, unknown>): Promise<T> {
   const { data, error } = await supabase.functions.invoke(name, { body });
   if (error) {
-    // Edge function HTTP errors come back here; try to extract the message
-    const msg = (data as { error?: string } | null)?.error ?? error.message;
-    throw new Error(msg);
+    // Surface function name + any returned error detail
+    const fnMsg = (data as { error?: string } | null)?.error;
+    const msg = fnMsg ?? error.message;
+    throw new Error(`[edge-fn:${name}] ${msg}`);
   }
   if (data && typeof data === "object" && "error" in data && (data as { error?: string }).error) {
     throw new Error((data as { error: string }).error);

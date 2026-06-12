@@ -74,12 +74,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Face Vault — Secure file storage with face recognition" },
       { name: "description", content: "Encrypt-by-identity file storage. Unlock with your face and a 6-digit passcode." },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { name: "author", content: "Secure Face Vault" },
+      { property: "og:title", content: "Face Vault — Secure file storage" },
+      { property: "og:description", content: "Encrypt-by-identity file storage. Unlock with your face and a 6-digit passcode." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {

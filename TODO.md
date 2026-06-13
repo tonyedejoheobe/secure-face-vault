@@ -6,5 +6,5 @@
 - [x] Add improved error reporting so function invocation failures show function name + underlying Supabase error
 
 - [ ] If needed, implement/route a real “initialize storage” edge function (bucket/policies setup) and call it from the UI
-- [ ] Run build + (if possible) local function tests
+- [x] Run build + (if possible) local function tests (client build)
 
